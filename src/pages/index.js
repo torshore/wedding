@@ -1,5 +1,9 @@
-import React from "react";
+import React from 'react';
+
+import LandingPageLayout from '../components/LandingPageLayout';
 
 import './index.scss';
 
-export default () => <div>Hello wedding website!</div>
+export default () => <div className="index">
+    <LandingPageLayout />
+</div>

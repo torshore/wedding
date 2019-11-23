@@ -6,11 +6,26 @@ html {
     >body {
         margin: 0;
         height: 100%;
-        background-color: $ivory;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Libre Baskerville', serif;
 
-        > #app {
+        > #___gatsby {
             height: 100%;
+            z-index: 0;
+
+            > #gatsby-focus-wrapper {
+                height: 100%;
+
+                > .index {
+                    position: relative;
+                    padding-bottom: 30px;
+                    height: 100%;
+                    z-index: 0;
+                }
+            }
         }
     }
+}
+
+* {
+    box-sizing: border-box;
 }
