@@ -1,9 +1,9 @@
 import React from 'react';
 
-import LandingPageLayout from '../components/LandingPageLayout';
+import PageLayout from '../components/PageLayout';
 
 import './index.scss';
 
 export default () => <div className="index">
-    <LandingPageLayout />
+    <PageLayout />
 </div>
