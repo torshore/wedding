@@ -1,0 +1,31 @@
+@import '../theme.scss';
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > ._main-title {
+        margin: 0 0 $spacing 0;
+        font-family: 'Oranienbaum', serif;
+        font-size: 90px;
+        font-weight: lighter;
+        color: $grey-text;
+        text-shadow: 1px 1px 1px rgba($grey-shadow, 0.6);
+        letter-spacing: 2.5px;
+    }
+
+    > ._sub-title {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-weight: lighter;
+        color: $grey-text;
+        text-shadow: 1px 1px 0px rgba($grey-shadow, 0.4);
+
+        > span {
+            margin: 0 $spacing;
+            font-size: 60px;
+        }
+    }
+}
