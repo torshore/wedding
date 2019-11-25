@@ -4,7 +4,7 @@ import Titles from './Titles';
 
 import '../styles/PageLayout.scss';
 
-export default () => (
+const PageLayout = () => (
     <div className="page-layout">
         <div className="_tall-section">
             <Titles
@@ -24,3 +24,5 @@ export default () => (
         </div>
     </div>
 )
+
+export default PageLayout;
