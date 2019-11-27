@@ -8,6 +8,9 @@
     @media #{$isTablet} {
         padding-bottom: $page-gutter
     }
+    @media #{$isPhone} {
+        padding-bottom: $page-gutter
+    }
 
     > ._tall-section {
         flex: 1;
@@ -15,6 +18,10 @@
 
         @media #{$isTablet} {
             padding: 70vh $page-gutter $page-gutter;
+        }
+
+        @media #{$isPhone} {
+            padding: 40px 100px;
         }
     }
 
@@ -27,6 +34,13 @@
 
         @media #{$isTablet} {
             padding: $page-gutter;
+        }
+
+        @media #{$isPhone} {
+            flex: 1;
+            justify-content: center;
+            padding: 45px 75px;
+            flex-wrap: wrap;
         }
 
         > div {

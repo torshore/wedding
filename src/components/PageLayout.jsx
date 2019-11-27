@@ -17,7 +17,7 @@ const PageLayout = () => (
 
         <div className="_short-section">
             <div>THE WEDDING</div>
-            <div>ACCOMODATIONS</div>
+            <div>HOTELS</div>
             <div>REGISTRY</div>
             <div>RSVP</div>
             <div>CONTACT US</div>
