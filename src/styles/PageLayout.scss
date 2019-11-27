@@ -3,15 +3,19 @@
 .page-layout {
     display: flex;
     flex-direction: column;
-    background: url(../assets/flower-banner.png) no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    z-index: -1;
+    height: 100%;
+
+    @media #{$isTablet} {
+        padding-bottom: $page-gutter
+    }
 
     > ._tall-section {
         flex: 1;
-        padding: 53vh $page-gutter $page-gutter;
+        padding: 58vh $page-gutter $page-gutter;
 
+        @media #{$isTablet} {
+            padding: 70vh $page-gutter $page-gutter;
+        }
     }
 
     > ._short-section {
@@ -19,7 +23,11 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        padding: $spacing $page-gutter * 2;
+        padding: $page-gutter $page-gutter * 2;
+
+        @media #{$isTablet} {
+            padding: $page-gutter;
+        }
 
         > div {
             padding: 10px 20px;
@@ -29,6 +37,12 @@
             letter-spacing: 2px;
             text-shadow: 1px 1px 0px rgba($grey-shadow, 0.4);
             transition: all 0.2s ease-in;
+
+            @media #{$isTablet} {
+                padding: 5px 10px;
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
 
             &:hover {
                 background: rgba($rose, 0.4);
