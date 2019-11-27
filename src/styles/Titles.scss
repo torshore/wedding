@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 
     > ._main-title {
         margin: 0 0 $spacing 0;
@@ -13,6 +14,18 @@
         color: $grey-text;
         text-shadow: 1px 1px 1px rgba($grey-shadow, 0.6);
         letter-spacing: 2.5px;
+
+        @media #{$isTablet} {
+            font-size: 70px;
+            letter-spacing: 1.5px;
+        }
+
+        @media #{$isPhone} {
+            margin: 0 0 90px 0;
+            font-size: 60px;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
     }
 
     > ._sub-title {
@@ -23,9 +36,19 @@
         color: $grey-text;
         text-shadow: 1px 1px 0px rgba($grey-shadow, 0.4);
 
+        @media #{$isTablet} {
+            font-size: 25px;
+            letter-spacing: 0.5px;
+        }
+
         > span {
             margin: 0 $spacing;
             font-size: 60px;
+
+            @media #{$isTablet} {
+                margin: 0 10px;
+                font-size: 30px;
+            }
         }
     }
 }

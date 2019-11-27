@@ -19,6 +19,22 @@ html {
                     position: relative;
                     height: 100%;
                     z-index: 0;
+
+                    > ._hero-image {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 35%;
+                        right: 0;
+                        background: url(../assets/flower-banner.png) no-repeat;
+                        background-size: cover;
+                        background-position: bottom;
+                        z-index: -1;
+
+                        @media #{$isTablet} {
+                            bottom: 25%;
+                        }
+                    }
                 }
             }
         }
