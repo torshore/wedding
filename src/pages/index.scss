@@ -26,21 +26,17 @@ html {
                         left: 0;
                         bottom: 35%;
                         right: 0;
-                        background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/flower-banner.png?alt=media') no-repeat;
+                        background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/flower-banner-desktop.png?alt=media') no-repeat;
                         background-size: cover;
                         background-position: bottom;
                         z-index: -1;
 
-                        @media #{$isTablet} {
-                            bottom: 25%;
+                        @media #{isPhone} {
+                            background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/flower-banner-tablet.png?alt=media') no-repeat;
                         }
                     }
                 }
             }
         }
     }
-}
-
-* {
-    box-sizing: border-box;
 }

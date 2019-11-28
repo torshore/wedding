@@ -3,7 +3,9 @@
 .page-layout {
     display: flex;
     flex-direction: column;
+    padding: $page-gutter;
     height: 100%;
+    box-sizing: border-box;
 
     @media #{$isTablet} {
         padding-bottom: $page-gutter
@@ -14,14 +16,14 @@
 
     > ._tall-section {
         flex: 1;
-        padding: 55vh $page-gutter $page-gutter;
+        padding: 325px $page-gutter $page-gutter;
 
         @media #{$isTablet} {
-            padding: 70vh $page-gutter $page-gutter;
+            padding: 400px $page-gutter $page-gutter;
         }
 
         @media #{$isPhone} {
-            padding: 70px 100px 0;
+            padding: 300px $page-gutter 0;
         }
     }
 
