@@ -16,10 +16,10 @@
 
     > ._tall-section {
         flex: 1;
-        padding: 325px $page-gutter $page-gutter;
+        padding: 400px $page-gutter $page-gutter;
 
         @media #{$isTablet} {
-            padding: 400px $page-gutter $page-gutter;
+            padding: 600px $page-gutter $page-gutter;
         }
 
         @media #{$isPhone} {
@@ -55,7 +55,7 @@
 
             @media #{$isTablet} {
                 padding: 5px 10px;
-                font-size: 14px;
+                font-size: 16px;
                 letter-spacing: 1px;
             }
 

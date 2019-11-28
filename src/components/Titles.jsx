@@ -1,12 +1,17 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
 
 import '../styles/Titles.scss';
 
  const Titles = (props) => {
+     const animationProps = useSpring(
+         { to: { opacity: 1 }, from: { opacity: 0 }, delay: 300 }
+     );
+
     return <div className="titles">
-        <h1 className="_main-title">
+        <animated.h1 className="_main-title" style={animationProps}>
             {props.mainTitle}
-        </h1>
+        </animated.h1>
 
         {props.subTitle
             ? props.subTitle
