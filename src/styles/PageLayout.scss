@@ -23,7 +23,7 @@
         }
 
         @media #{$isPhone} {
-            padding: 300px $page-gutter 0;
+            padding: 220px 0 0 0;
         }
     }
 
@@ -41,7 +41,6 @@
         @media #{$isPhone} {
             flex: 1;
             justify-content: center;
-            padding: 45px 75px;
             flex-wrap: wrap;
         }
 

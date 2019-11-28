@@ -22,7 +22,7 @@
 
         @media #{$isPhone} {
             margin: 0 0 $page-gutter 0;
-            font-size: 60px;
+            font-size: 40px;
             letter-spacing: 1.5px;
             text-align: center;
         }
@@ -31,7 +31,7 @@
     > ._sub-title {
         display: flex;
         align-items: center;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: lighter;
         color: $grey-text;
         text-shadow: 1px 1px 0px rgba($grey-shadow, 0.4);
