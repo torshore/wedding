@@ -1,0 +1,17 @@
+@import '../theme.scss';
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 35%;
+    right: 0;
+    background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/flower-banner-desktop.png?alt=media') no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1;
+
+    @media #{isPhone} {
+        background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/flower-banner-tablet.png?alt=media') no-repeat;
+    }
+}
