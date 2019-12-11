@@ -43,13 +43,14 @@
             flex-wrap: wrap;
         }
 
-        > div {
+        > div, a {
             padding: 10px 20px;
             font-size: 16px;
             font-family: 'Oranienbaum', serif;
             color: $grey-text;
             letter-spacing: 2px;
             text-shadow: 1px 1px 0px rgba($grey-shadow, 0.4);
+            text-decoration: none;
             transition: all 0.2s ease-in;
 
             @media #{$isTablet} {
