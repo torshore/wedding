@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "gatsby"
 import { useSpring, animated } from 'react-spring';
 
 import Titles from './Titles';
@@ -21,7 +22,7 @@ const PageLayout = () => {
         </div>
 
         <div className="_short-section">
-            <div>THE WEDDING</div>
+            <Link to="/wedding/">THE WEDDING</Link>
             <div>HOTELS</div>
             <div>REGISTRY</div>
             <div>RSVP</div>
