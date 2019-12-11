@@ -1,1 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Oranienbaum&display=swap')
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Oranienbaum&display=swap'); 
+
+html {
+    height: 100%;
+
+    > body {
+        margin: 0;
+        height: 100%;
+        font-family: 'Libre Baskerville', serif;
+
+        > #___gatsby {
+            height: 100%;
+            z-index: 0;
+
+            > #gatsby-focus-wrapper {
+                height: 100%;
+            }
+        }
+    }
+}
