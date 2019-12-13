@@ -21,7 +21,7 @@
         }
 
         @media #{$isPhone} {
-            margin: 0 0 $page-gutter 0;
+            margin: 0 0 $spacing / 2 0;
             font-size: 40px;
             letter-spacing: 1.5px;
             text-align: center;

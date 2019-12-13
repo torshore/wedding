@@ -1,7 +1,15 @@
 @import '../theme.scss';
 
 .index {
-    position: relative;
-    height: 100%;
+    position: relative; // for absolute hero-image
+    padding: 375px $page-gutter $page-gutter;
     z-index: 0;
+
+    @media #{$isTablet} {
+        padding: 600px $page-gutter $page-gutter;
+    }
+
+    @media #{$isPhone} {
+        padding: 275px 0 0 0;
+    }
 }
