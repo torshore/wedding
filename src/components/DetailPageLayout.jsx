@@ -7,7 +7,7 @@ const DetailPageLayout = ({children}) => {
         <div className="_content">
             {children}
         </div>
-    </div>
+    </div>;
 }
 
 export default DetailPageLayout;
