@@ -3,7 +3,6 @@ import React from 'react';
 import { Transition } from 'react-spring/renderprops';
 
 import DetailPageLayout from '../components/DetailPageLayout';
-import PageLayout from '../components/PageLayout';
 
 import '../styles/wedding.scss';
 
