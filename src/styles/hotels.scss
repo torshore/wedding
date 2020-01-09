@@ -1,0 +1,74 @@
+@import '../theme.scss';
+
+.hotels {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Oranienbaum',
+    serif;
+    color: $grey-text;
+    letter-spacing: 1px;
+
+    >._title {
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: $spacing;
+        font-size: 20px;
+
+
+        >._image {
+            width: 100px;
+            height: 50px;
+            filter: brightness(150%);
+            background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/leaf-border.png?alt=media&token=f7131637-1578-4cab-8177-944e5cd9dac6') no-repeat;
+            background-size: cover;
+            background-position: bottom;
+        }
+    }
+
+    > ._columns {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+
+        > ._column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 $page-gutter * 2;
+
+            > ._cursive {
+                font-family: 'Sacramento',
+                cursive;
+                font-size: 50px;
+            }
+
+            > ._link {
+                width: 215px;
+                height: 175px;
+                background: linear-gradient(rgba($grey-shadow, 0.5),
+                    rgba($grey-shadow, 0.5)),
+                url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/ivey.png?alt=media&token=84dee180-6fa3-48df-9e6b-21ad26963266') no-repeat;
+                background-size: cover;
+                background-position: bottom;
+                margin: 10px 0 $page-gutter 0;
+
+                &.-delta {
+                    background: linear-gradient(rgba($grey-shadow, 0.5),
+                        rgba($grey-shadow, 0.5)),
+                    url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/delta.png?alt=media&token=5cd5bb47-0ca6-42b4-a876-2ab88eb5062f') no-repeat;
+                    background-position: center;
+                }
+            }
+
+            > span {
+                text-align: center;
+            }
+            
+        }
+    }
+}
