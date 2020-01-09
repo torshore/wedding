@@ -1,14 +1,9 @@
 import React from 'react';
-import { useSpring, animated, config } from 'react-spring';
 
 import '../styles/HeroImage.scss';
 
 const HeroImage = () => {
-    const animationProps = useSpring(
-        {opacity: 1, from: { opacity: 0 }, config: config.molasses  }
-    );
-
-    return <animated.div className="hero-image" style={animationProps}/>;
+    return <div className="hero-image"/>;
 }
 
 export default HeroImage;
