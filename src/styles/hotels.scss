@@ -3,6 +3,7 @@
 .hotels {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 100%;
     box-sizing: border-box;
     font-family: 'Oranienbaum',
@@ -11,7 +12,6 @@
     letter-spacing: 1px;
 
     >._title {
-        flex: none;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,24 +30,31 @@
     }
 
     > ._columns {
-        flex: 1;
         display: flex;
         justify-content: space-between;
 
         > ._column {
+            position: relative;
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 0 $page-gutter * 2;
 
-            > ._cursive {
+            >._cursive {
+                position: absolute;
+                top: 20%;
                 font-family: 'Sacramento',
-                cursive;
+                    cursive;
                 font-size: 50px;
+                color: #f2f2f2;
+                text-shadow: 2px 2px 2px rgba($grey-shadow, 0.4);
+                z-index: 1;
             }
+            
 
             > ._link {
+                position: relative;
                 width: 215px;
                 height: 175px;
                 background: linear-gradient(rgba($grey-shadow, 0.5),
@@ -56,6 +63,8 @@
                 background-size: cover;
                 background-position: bottom;
                 margin: 10px 0 $page-gutter 0;
+
+                text-decoration: none;
 
                 &.-delta {
                     background: linear-gradient(rgba($grey-shadow, 0.5),

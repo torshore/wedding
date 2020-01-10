@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, config } from 'react-spring';
 
 import DetailPageLayout from '../components/DetailPageLayout';
 
@@ -8,7 +8,7 @@ import '../styles/hotels.scss';
 
 export default () => {
     const animationProps = useSpring(
-        { to: { opacity: 1 }, from: { opacity: 0 } }
+        { to: { opacity: 1 }, from: { opacity: 0 }, config: config.slow }
     );
 
     return <DetailPageLayout>
@@ -29,7 +29,7 @@ export default () => {
                         style={animationProps}
                     />
 
-                    <span>WE HAVE A BLOCK OF ROOMS RESERVED FOR FRIDAY MAY 29TH AND SATURDAY MAY 30TH.  CLICK THE PICTURE ABOVE TO BOOK!</span>
+                    <span>We have a block of rooms reserved for Friday May 29th and Saturday May 30th.  Click the picture above to book!</span>
                 </div>
 
                 <div className="_column">
@@ -39,8 +39,8 @@ export default () => {
                         href="https://www.marriott.com/hotels/travel/yxudl-delta-hotels-london-armouries/"
                         style={animationProps}
                     />
-                    <span>USE OUR CODE 'w14' TO GET 20% IF YOU'D LIKE TO BOOK AT THE DELTA!</span>
-                    
+
+                    <span>Use our code 'w14' to get 20% off if you'd like to stay at the Delta!</span>
                 </div>
             </div>
         </div>
