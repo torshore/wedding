@@ -61,6 +61,7 @@
 
         > ._title {
             align-self: center;
+            margin-bottom: $spacing;
             font-family: 'Sacramento', cursive;
             font-size: 40px;
         }
@@ -70,7 +71,7 @@
             list-style-type: circle;
 
             > li {
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             }
         }
     }

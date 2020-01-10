@@ -1,5 +1,5 @@
 import React from 'react';
-import { Transition } from 'react-spring/renderprops'
+import { Transition, config } from 'react-spring/renderprops'
 
 import '../styles/DetailPageLayout.scss';
 
@@ -8,6 +8,7 @@ const DetailPageLayout = ({children}) => {
         items={<div className="_content">
             {children}
         </div>}
+        config={config.slow}
         from={{ opacity: 0 }}
         enter={{ opacity: 1 }}
         leave={{ opacity: 0 }}
