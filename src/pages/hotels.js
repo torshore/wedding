@@ -25,6 +25,7 @@ export default () => {
 
                     <animated.a
                         className="_link"
+                        target="_blank"
                         href="https://book.passkey.com/go/ShoremanBeltranWedding"
                         style={animationProps}
                     />
@@ -36,6 +37,7 @@ export default () => {
                     <span className="_cursive">delta armouries</span>
                     <animated.a
                         className="_link -delta"
+                        target="_blank"
                         href="https://www.marriott.com/hotels/travel/yxudl-delta-hotels-london-armouries/"
                         style={animationProps}
                     />

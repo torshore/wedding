@@ -23,6 +23,7 @@ export default () => {
                 <div className="_column">
                     <animated.a
                         className="_link"
+                        target="_blank"
                         href="https://registry.thebay.com/registry/view-registry/tory_and_macky"
                         style={animationProps}
                     />
@@ -31,6 +32,7 @@ export default () => {
                 <div className="_column">
                     <animated.a
                         className="_link -amazon"
+                        target="_blank"
                         href="https://www.amazon.ca/wedding/tory-shoreman-macky-beltran-london-on-may-2020/registry/ZHIO94GSILFT"
                         style={animationProps}
                     />
