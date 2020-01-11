@@ -7,7 +7,7 @@ const NavBar = () => {
     return <div className="nav-bar">
         <Link to="/wedding/">THE WEDDING</Link>
         <Link to="/hotels/">HOTELS</Link>
-        <div>REGISTRY</div>
+        <Link to="/registry/">REGISTRY</Link>
         <div>RSVP</div>
         <div>CONTACT US</div>
     </div>
