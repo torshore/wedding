@@ -8,7 +8,7 @@ const NavBar = () => {
         <Link to="/wedding/">THE WEDDING</Link>
         <Link to="/hotels/">HOTELS</Link>
         <Link to="/registry/">REGISTRY</Link>
-        <div>RSVP</div>
+        <Link to="/rsvp/">RSVP</Link>
         <div>CONTACT US</div>
     </div>
 }
