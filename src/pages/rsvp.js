@@ -33,10 +33,15 @@ export default function rsvp() {
     }
 
     const handleAttending = (bool) => {
+        // remove attending value from data
+        let currentData = data[currentItem]
+        if (currentData.attending){
+            delete currentData.attending
+        }
         let updates = {}
         updates['/guests/' + currentItem] = {
             attending: bool,
-            ...data[currentItem]
+            ...currentData
         }
         firebaseDatabase.ref().update(updates)
         bool ? handleInitialFormData(data[currentItem].count)
