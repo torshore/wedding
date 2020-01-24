@@ -189,6 +189,9 @@ export default function rsvp() {
             <div>
                 { error }
             </div>
+            <div>
+                if you have any concerns about your number of seats, please email torymackywedding@gmail.com
+            </div>
         </DetailPageLayout>
     }
 }
