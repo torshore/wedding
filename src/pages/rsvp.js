@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
 
 import DetailPageLayout from '../components/DetailPageLayout';
 import { getFirebase } from '../../firebase'
@@ -22,7 +23,7 @@ export default function rsvp() {
             // do something with `database` here,
             // or store it as an instance variable or in state
             // to do stuff with it later
-            database.ref('/guests/').once('value', snap => {
+            database.ref('/guests/').on('value', snap => {
                 setData(snap.val())
             })
         })     
@@ -89,6 +90,7 @@ export default function rsvp() {
             message: message
         }
         firebaseDatabase.ref().update(updates)
+        navigate("/")
     }
 
     const handleSubmit = (event) => {
@@ -110,10 +112,17 @@ export default function rsvp() {
                 attending: true,
                 confirmed_count: filteredFormData.length
             }
+            let guests = []
             filteredFormData.map(item => {
-                updates['/guests/' + currentItem][item.name] = {
-                    dinner: item.dinner}
+                guests.push({
+                    name: item.name,
+                    dinner: item.dinner
+                })
             })
+            updates['/guests/' + currentItem] = {
+                guests,
+                ...data[currentItem]
+            }
             firebaseDatabase.ref().update(updates)
             setCurrentPhase('thanks')
         }
@@ -159,6 +168,9 @@ export default function rsvp() {
         return <DetailPageLayout>
             <div>
                 Thank you.
+            </div>
+            <div>
+                Any concerns or messages for Tory and Macky?
             </div>
             <form onSubmit={ handleMessageSubmit }>
                 <input type='text' value={ message } onChange={ handleMessageChange } />
