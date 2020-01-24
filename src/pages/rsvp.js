@@ -9,6 +9,7 @@ export default function rsvp() {
     const [currentPhase, setCurrentPhase] = useState('select')
     const [formData, setFormData] = useState([])
     const [error, setError] = useState('')
+    const [message, setMessage] = useState('')
     const [firebaseDatabase, setFirebaseDatabase] = useState({})
     
     useEffect(() => {
@@ -75,6 +76,21 @@ export default function rsvp() {
         setFormData(JSON.stringify(currentFormData))
     }
 
+    const handleMessageChange = (event) => {
+        setMessage(event.target.value)
+    }
+
+    const handleMessageSubmit = (event) => {
+        event.preventDefault()
+        let updates = {}
+        console.log(message)
+        updates['/guests/' + currentItem] = {
+            ...data[currentItem],
+            message: message
+        }
+        firebaseDatabase.ref().update(updates)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
         const currentFormData = JSON.parse(formData)
@@ -91,7 +107,8 @@ export default function rsvp() {
             let updates = {}
             updates['/guests/' + currentItem] = {
                 ...data[currentItem],
-                attending: true
+                attending: true,
+                confirmed_count: filteredFormData.length
             }
             filteredFormData.map(item => {
                 updates['/guests/' + currentItem][item.name] = {
@@ -143,6 +160,10 @@ export default function rsvp() {
             <div>
                 Thank you.
             </div>
+            <form onSubmit={ handleMessageSubmit }>
+                <input type='text' value={ message } onChange={ handleMessageChange } />
+                <input type='submit' />
+            </form>
         </DetailPageLayout>
     }
     if (currentPhase === 'details'){
