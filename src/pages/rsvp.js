@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 
-import DetailPageLayout from '../components/DetailPageLayout';
-import { getFirebase } from '../../firebase'
+import DetailPageLayout from '../components/DetailPageLayout.jsx';
+import DropdownInput from '../components/DropdownInput.jsx';
+import Spinner from '../components/Spinner.jsx';
+import { getFirebase } from '../../firebase';
+
+import '../styles/rsvp.scss';
 
 export default function rsvp() {
     const [data, setData] = useState([])
@@ -129,18 +133,33 @@ export default function rsvp() {
 
     if (currentPhase === 'select'){
         return <DetailPageLayout>
-        <div>
-            <p>Please Select Your name/s from this list:</p>
-            <select value={currentItem} onChange={(event) => handleNameSelect(event)}>
-            { data.map((item, index) => {
-                return <option key={ index } value={ index }>
-                    { item.name }
-                </option>
-            }) } 
-            </select>
-        </div>
-    </DetailPageLayout>
+            {data
+                ? <div className="rsvp">
+                    <div className="_title">
+                        <div className="_image" />
+
+                        <span>Please choose your name from the list below:</span>
+                    </div>
+                    <DropdownInput
+                        placeholder="Guests"
+                        value={currentItem}
+                        onChange={(event) => handleNameSelect(event.target.value)}
+                        options={data}
+                    />
+
+                    {/*<select value={currentItem} onChange={(event) => handleNameSelect(event)}>
+                    { data.map((item, index) => {
+                        return <option key={ index } value={ index }>
+                            { item.name }
+                        </option>
+                    }) } }
+                </select>*/}
+                </div>
+                : <Spinner />
+            }
+        </DetailPageLayout>
     }
+    
     if (currentPhase === 'name-confirmation'){
         return <DetailPageLayout>
             <div>
