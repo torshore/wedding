@@ -84,7 +84,6 @@ export default function rsvp() {
     const handleMessageSubmit = (event) => {
         event.preventDefault()
         let updates = {}
-        console.log(message)
         updates['/guests/' + currentItem] = {
             ...data[currentItem],
             message: message
