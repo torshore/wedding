@@ -1,0 +1,28 @@
+@import '../theme.scss';
+
+.rsvp {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+    height: 100%;
+
+    >._title {
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        font-size: 20px;
+
+
+        >._image {
+            width: 100px;
+            height: 50px;
+            filter: brightness(150%);
+            background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/leaf-border.png?alt=media&token=f7131637-1578-4cab-8177-944e5cd9dac6') no-repeat;
+            background-size: cover;
+            background-position: bottom;
+        }
+    }
+}

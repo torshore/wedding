@@ -9,17 +9,17 @@ import { getFirebase } from '../../firebase';
 import '../styles/rsvp.scss';
 
 export default function rsvp() {
-    const [data, setData] = useState([])
-    const [currentItem, setCurrentItem] = useState(0)
-    const [currentPhase, setCurrentPhase] = useState('select')
-    const [formData, setFormData] = useState([])
-    const [error, setError] = useState('')
-    const [message, setMessage] = useState('')
-    const [firebaseDatabase, setFirebaseDatabase] = useState({})
+    const [data, setData] = useState(null);
+    const [currentItem, setCurrentItem] = useState(0);
+    const [currentPhase, setCurrentPhase] = useState('select');
+    const [formData, setFormData] = useState([]);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+    const [firebaseDatabase, setFirebaseDatabase] = useState({});
     
     useEffect(() => {
-        const lazyApp = import('firebase/app')
-        const lazyDatabase = import('firebase/database')
+        const lazyApp = import('firebase/app');
+        const lazyDatabase = import('firebase/database');
       
         Promise.all([lazyApp, lazyDatabase]).then(([firebase]) => {
             const database = getFirebase(firebase).database()
@@ -28,14 +28,14 @@ export default function rsvp() {
             // or store it as an instance variable or in state
             // to do stuff with it later
             database.ref('/guests/').on('value', snap => {
-                setData(snap.val())
+                setData(snap.val());
             })
         })     
     }, []);
 
-    const handleNameSelect = (event) => {
-        setCurrentItem(Number(event.target.value))
-        setCurrentPhase('name-confirmation')
+    const handleNameSelect = (value) => {
+        setCurrentItem(Number(value));
+        setCurrentPhase('name-confirmation');
     }
 
     const handleAttending = (bool) => {
