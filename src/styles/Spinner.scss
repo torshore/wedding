@@ -1,0 +1,48 @@
+@import '../theme.scss';
+
+.spinner {
+    display: inline-block;
+    overflow: hidden;
+
+    >._padding {
+        display: inline-block;
+        padding: 2px;
+        animation: spinner-animation 2s linear infinite;
+
+        >._circle {
+            margin: auto;
+            width: 120px;
+            height: 120px;
+            border: 4px solid white;
+            border-top: 4px solid white;
+            border-radius: 50%;
+
+            &[data-is-small="true"] {
+                width: 30px;
+                height: 30px;
+            }
+
+            &[data-is-tiny="true"] {
+                width: 10px;
+                height: 10px;
+                border-width: 2px;
+                border-top-width: 2px;
+            }
+
+            &[data-is-blue="true"] {
+                border: 4px solid darkgrey;
+                border-top: 4px solid white;
+            }
+        }
+    }
+}
+
+@keyframes spinner-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
