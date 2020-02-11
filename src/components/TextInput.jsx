@@ -20,7 +20,6 @@ class TextInput extends PureComponent {
                     placeholder={this.props.placeholder}
                     value={this.props.value}
                     autoComplete="off"
-                    autoFocus
                     onChange={(event) => this.props.onChange(event)}
                 />
             }

@@ -9,6 +9,14 @@ import { getFirebase } from '../../firebase';
 
 import '../styles/rsvp.scss';
 
+const foodOptions = [
+    { name: 'undecided' },
+    { name: 'Chicken' },
+    { name: 'Beef' },
+    { name: 'Vegetarian' },
+    { name: 'Kids Meal' }
+];
+
 export default function rsvp() {
     const [data, setData] = useState(null);
     const [currentItem, setCurrentItem] = useState(0);
@@ -76,9 +84,9 @@ export default function rsvp() {
         setCurrentPhase('details')
     }
 
-    const handleFormChange = (event, index, type) => {
+    const handleFormChange = (value, index, type) => {
         let currentFormData = JSON.parse(formData)
-        currentFormData[index][type] = event.target.value
+        currentFormData[index][type] = value;
         setFormData(JSON.stringify(currentFormData))
     }
 
@@ -210,21 +218,19 @@ export default function rsvp() {
                     <div className="_title">
                         <div className="_image" />
 
-                        {/* eslint-disable-next-line react/no-unescaped-entities */}
-                        <span>We're sorry you can't be there to celebrate with us!</span>
-                        <span>You will be missed!</span>
+                        {/* eslint-disable react/no-unescaped-entities */}
+                        <span>Thank you for taking the time to RSVP!</span>
+                        <span>If you can't make it, we're sorry you can't be there to celebrate with us!</span>
                     </div>
-                    <div className="_label">
-                        Thank you for taking the time to RSVP!  
-                    </div>
+                    
                     <form onSubmit={handleMessageSubmit}>
                         <TextInput
                             type="textarea"
                             value={message}
                             onChange={handleMessageChange}
-                            placeholder="Send us any messages or questions here"
+                            placeholder="Let us know if you have any messages or questions"
                         />
-                        <button type='submit'>Submit</button>
+                        <button type='submit'>Finish RSVP</button>
                     </form>
                 </>
                 : null
@@ -232,49 +238,52 @@ export default function rsvp() {
 
             {currentPhase === 'details'
                 ? <>
-                    <div>
-                        Hello, {data[currentItem].name}! We have reserved {data[currentItem].count} seats in your honour.
+                    <div className="_title">
+                        <div className="_image" />
+
+                        <span>RSVP</span>
                     </div>
-                    <div>
-                        Please fill in the following details for your reservation. If you dont need all the slots just leave the space blank.
+                    <div className="_label">
+                        <span>Hi, {data[currentItem].name}! We have reserved {data[currentItem].count} seats in your honour</span>
+
+                        <span>Please fill in the following details for your reservation</span>
                     </div>
-                    <div>
-                        <form onSubmit={handleSubmit}>
-                            {JSON.parse(formData).map((formItem, index) => {
-                                return <div key={index}>
-                                    <input placeholder='name' type="text" value={formItem.name} onChange={() => handleFormChange(event, index, 'name')} name={index} />
-                                    <div className='dinner-picker'>
-                                        <p>
-                                            select a dinner choice:
-                                        </p>
-                                        <select value={formItem.dinner} onChange={() => handleFormChange(event, index, 'dinner')} name={index}>
-                                            <option value='undecided'>
-                                                undecided
-                                    </option>
-                                            <option value='chicken'>
-                                                chicken
-                                    </option>
-                                            <option value='beef'>
-                                                beef
-                                    </option>
-                                            <option value='veggie'>
-                                                veggie
-                                    </option>
-                                            <option value='kids meal'>
-                                                kids meal
-                                    </option>
-                                        </select>
-                                    </div>
+                    <div className="_label -italics">
+                        If a member of your party is unable to attend, please leave their row blank
+                    </div>
+                    <div className="_label">
+                        Please input the name and dinner selection for each guest:
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        {JSON.parse(formData).map((formItem, index) => {
+                            return <div className='_dinner-picker' key={index}>
+                                <div className="_align-input -text"><TextInput
+                                    placeholder="Name of Guest"
+                                    type="text"
+                                    value={formItem.name}
+                                    onChange={() => handleFormChange(event.target.value, index, 'name')}
+                                    name={index}
+                                /></div>
+
+                                <div className="_align-input">
+                                    <DropdownInput
+                                        placeholder="Dinner Choice"
+                                        value={formItem.dinner}
+                                        onChange={(event) => handleFormChange(foodOptions[event.target.value].name, index, 'dinner')}
+                                        options={foodOptions}
+                                        name={index}
+                                        small
+                                    />
                                 </div>
-                            })}
-                            <input type='submit' />
-                        </form>
-                    </div>
+                            </div>
+                        })}
+                        <button type='submit'>Submit</button>
+                    </form>
                     <div>
                         {error}
                     </div>
-                    <div>
-                        if you have any concerns about your number of seats, please email torymackywedding@gmail.com
+                    <div className="_label -italics">
+                        If you have any concerns or questions about your RSVP, please email torymackywedding@gmail.com
                     </div>
                 </>
                 : null

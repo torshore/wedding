@@ -7,11 +7,14 @@ const DropdownInput = (props) => {
     const options = props.options;
     const [ selectedValue, setSelectedValue ] = useState('');
 
-    return <label className="dropdown-input">
+    return <label
+        className="dropdown-input"
+        data-small={props.small}
+    >
         <span className="_selected-value">
             {selectedValue === ''
                 ? props.placeholder
-                : options[selectedValue]
+                : options[selectedValue].name
             }
 
             <FaCaretDown className="_icon" />
@@ -24,6 +27,7 @@ const DropdownInput = (props) => {
 
                     props.onChange(event);
                 }}
+                name={props.name}
             >
                 {options.map((option, optionIndex) =>
                     <option

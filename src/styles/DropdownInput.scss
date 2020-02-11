@@ -8,6 +8,14 @@
 
     cursor: pointer;
 
+    &[data-small="true"] {
+        > ._selected-value {
+            padding: 10px 15px;
+            line-height: 14px;
+            font-size: 14px;
+        }
+    }
+
     > ._selected-value {
         position: relative;
         z-index: 1; // put above select
