@@ -207,11 +207,15 @@ export default function rsvp() {
 
             {currentPhase === 'thanks'
                 ? <>
-                    <div>
-                        Thank you.
+                    <div className="_title">
+                        <div className="_image" />
+
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
+                        <span>We're sorry you can't be there to celebrate with us!</span>
+                        <span>You will be missed!</span>
                     </div>
-                    <div>
-                            Any concerns or messages for Tory and Macky?
+                    <div className="_label">
+                        Thank you for taking the time to RSVP!  
                     </div>
                     <form onSubmit={handleMessageSubmit}>
                         <TextInput
