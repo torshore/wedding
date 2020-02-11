@@ -1,0 +1,66 @@
+@import '../theme.scss';
+
+.dropdown-input {
+    position: relative;
+    z-index: 0; // reset stacking context for select
+    display: block;
+    color: darkgrey;
+
+    cursor: pointer;
+
+    &[data-small="true"] {
+        > ._selected-value {
+            padding: 10px 15px;
+            line-height: 14px;
+            font-size: 14px;
+        }
+    }
+
+    > ._selected-value {
+        position: relative;
+        z-index: 1; // put above select
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid darkgrey;
+        padding: 15px 25px;
+        border-radius: 5px;
+        background: $light-grey-text;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+        pointer-events: none; // clicks to underlying select
+
+        >._icon {
+            margin: -2px 0 0 30px; // reduce line height and nudge
+            font-size: 20px;
+            color: white;
+        }
+    }
+
+    > select {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        -webkit-appearance: none;
+
+        appearance: none;
+        box-sizing: border-box;
+        width: 100%;
+        height: 36px; // avoid overlapping label text for IE11
+        border: 0;
+        padding: 0 15px; // for the menu
+        background: none;
+        font-family: inherit;
+        font-size: 14px; // for the menu
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-ms-expand {
+            display: none; // hide dropdown caret in IE11
+        }
+    }
+}

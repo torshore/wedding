@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 
-import DetailPageLayout from '../components/DetailPageLayout';
-import { getFirebase } from '../../firebase'
+import DetailPageLayout from '../components/DetailPageLayout.jsx';
+import DropdownInput from '../components/DropdownInput.jsx';
+import Spinner from '../components/Spinner.jsx';
+import TextInput from '../components/TextInput.jsx';
+import { getFirebase } from '../../firebase';
+
+import '../styles/rsvp.scss';
+
+const foodOptions = [
+    { name: 'undecided' },
+    { name: 'Chicken' },
+    { name: 'Beef' },
+    { name: 'Vegetarian' },
+    { name: 'Kids Meal' }
+];
 
 export default function rsvp() {
-    const [data, setData] = useState([])
-    const [currentItem, setCurrentItem] = useState(0)
-    const [currentPhase, setCurrentPhase] = useState('select')
-    const [formData, setFormData] = useState([])
-    const [error, setError] = useState('')
-    const [message, setMessage] = useState('')
-    const [firebaseDatabase, setFirebaseDatabase] = useState({})
+    const [data, setData] = useState(null);
+    const [currentItem, setCurrentItem] = useState(0);
+    const [currentPhase, setCurrentPhase] = useState('select');
+    const [formData, setFormData] = useState([]);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+    const [firebaseDatabase, setFirebaseDatabase] = useState({});
     
     useEffect(() => {
-        const lazyApp = import('firebase/app')
-        const lazyDatabase = import('firebase/database')
+        const lazyApp = import('firebase/app');
+        const lazyDatabase = import('firebase/database');
       
         Promise.all([lazyApp, lazyDatabase]).then(([firebase]) => {
             const database = getFirebase(firebase).database()
@@ -24,14 +37,14 @@ export default function rsvp() {
             // or store it as an instance variable or in state
             // to do stuff with it later
             database.ref('/guests/').on('value', snap => {
-                setData(snap.val())
+                setData(snap.val());
             })
         })     
     }, []);
 
-    const handleNameSelect = (event) => {
-        setCurrentItem(Number(event.target.value))
-        setCurrentPhase('name-confirmation')
+    const handleNameSelect = (value) => {
+        setCurrentItem(Number(value));
+        setCurrentPhase('name-confirmation');
     }
 
     const handleAttending = (bool) => {
@@ -71,20 +84,19 @@ export default function rsvp() {
         setCurrentPhase('details')
     }
 
-    const handleFormChange = (event, index, type) => {
+    const handleFormChange = (value, index, type) => {
         let currentFormData = JSON.parse(formData)
-        currentFormData[index][type] = event.target.value
+        currentFormData[index][type] = value;
         setFormData(JSON.stringify(currentFormData))
     }
 
     const handleMessageChange = (event) => {
-        setMessage(event.target.value)
+        setMessage(event.target.value);
     }
 
     const handleMessageSubmit = (event) => {
         event.preventDefault()
         let updates = {}
-        console.log(message)
         updates['/guests/' + currentItem] = {
             ...data[currentItem],
             message: message
@@ -127,104 +139,155 @@ export default function rsvp() {
             setCurrentPhase('thanks')
         }
     }
+    return <DetailPageLayout>
+        <div className="rsvp">
+            {currentPhase === 'select'
+                ? data
+                    ? <>
+                        <div className="_title">
+                            <div className="_image" />
 
-    if (currentPhase === 'select'){
-        return <DetailPageLayout>
-        <div>
-            <p>Please Select Your name/s from this list:</p>
-            <select value={currentItem} onChange={(event) => handleNameSelect(event)}>
-            { data.map((item, index) => {
-                return <option key={ index } value={ index }>
-                    { item.name }
-                </option>
-            }) } 
-            </select>
+                            <span>Please choose your name from the list below:</span>
+                        </div>
+                        <DropdownInput
+                            placeholder="Guests"
+                            value={currentItem}
+                            onChange={(event) => handleNameSelect(event.target.value)}
+                            options={data}
+                        />
+                    </>
+                    : <Spinner />
+                : null
+            }
+
+            {currentPhase === 'name-confirmation'
+                ? <>
+                    <div className="_title">
+                        <div className="_image" />
+
+                        <span>Please confirm your selection:</span>
+                        <span className="_name">{data[currentItem].name}</span>
+                    </div>
+                   
+                    <div className="_button-group">
+                        <button 
+                            className='confirmation-button'
+                            onClick={() => setCurrentPhase('attendance-confirmation')}
+                        >
+                            YES
+                        </button>
+                        <button
+                            className='confirmation-button'
+                            onClick={() => setCurrentPhase('select')}
+                        >
+                            NO
+                        </button>
+                    </div>
+                </>
+                : null
+            }
+
+            {currentPhase === 'attendance-confirmation'
+                ? <>
+                    <div className="_title">
+                        <div className="_image" />
+
+                        <span>Will you, or anyone in your party, be able to attend?</span>
+                    </div>
+                    
+                    <div className="_button-group">
+                        <button
+                            className="confirmation-button"
+                            onClick={() => handleAttending(true)}
+                        >
+                            YES
+                        </button>
+                        <button
+                            className="confirmation-button"
+                            onClick={() => handleAttending(false)}
+                        >
+                            NO
+                        </button>
+                    </div>
+                </>
+                : null
+            }
+
+            {currentPhase === 'thanks'
+                ? <>
+                    <div className="_title">
+                        <div className="_image" />
+
+                        {/* eslint-disable react/no-unescaped-entities */}
+                        <span>Thank you for taking the time to RSVP!</span>
+                        <span>If you can't make it, we're sorry you can't be there to celebrate with us!</span>
+                    </div>
+                    
+                    <form onSubmit={handleMessageSubmit}>
+                        <TextInput
+                            type="textarea"
+                            value={message}
+                            onChange={handleMessageChange}
+                            placeholder="Let us know if you have any messages or questions"
+                        />
+                        <button type='submit'>Finish RSVP</button>
+                    </form>
+                </>
+                : null
+            }
+
+            {currentPhase === 'details'
+                ? <>
+                    <div className="_title">
+                        <div className="_image" />
+
+                        <span>RSVP</span>
+                    </div>
+                    <div className="_label">
+                        <span>Hi, {data[currentItem].name}! We have reserved {data[currentItem].count} seats in your honour</span>
+
+                        <span>Please fill in the following details for your reservation</span>
+                    </div>
+                    <div className="_label -italics">
+                        If a member of your party is unable to attend, please leave their row blank
+                    </div>
+                    <div className="_label">
+                        Please input the name and dinner selection for each guest:
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        {JSON.parse(formData).map((formItem, index) => {
+                            return <div className='_dinner-picker' key={index}>
+                                <div className="_align-input -text"><TextInput
+                                    placeholder="Name of Guest"
+                                    type="text"
+                                    value={formItem.name}
+                                    onChange={() => handleFormChange(event.target.value, index, 'name')}
+                                    name={index}
+                                /></div>
+
+                                <div className="_align-input">
+                                    <DropdownInput
+                                        placeholder="Dinner Choice"
+                                        value={formItem.dinner}
+                                        onChange={(event) => handleFormChange(foodOptions[event.target.value].name, index, 'dinner')}
+                                        options={foodOptions}
+                                        name={index}
+                                        small
+                                    />
+                                </div>
+                            </div>
+                        })}
+                        <button type='submit'>Submit</button>
+                    </form>
+                    <div>
+                        {error}
+                    </div>
+                    <div className="_label -italics">
+                        If you have any concerns or questions about your RSVP, please email torymackywedding@gmail.com
+                    </div>
+                </>
+                : null
+            }
         </div>
     </DetailPageLayout>
-    }
-    if (currentPhase === 'name-confirmation'){
-        return <DetailPageLayout>
-            <div>
-                You have selected { data[currentItem].name }. Please Confirm.
-            </div>
-            <div>
-                <div className='confirmation-button' onClick={() => setCurrentPhase('attendance-confirmation')}>YES</div>
-                <div className='confirmation-button' onClick={() => setCurrentPhase('select')}>NO</div>
-            </div>
-        </DetailPageLayout>
-    }
-    if (currentPhase === 'attendance-confirmation'){
-        return <DetailPageLayout>
-            <div>
-                Are You or anyone in your party atttending?
-            </div>
-            <div>
-                <div className='confirmation-button' onClick={() =>  handleAttending(true)}>YES</div>
-                <div className='confirmation-button' onClick={() =>  handleAttending(false) }>NO</div>
-            </div>
-        </DetailPageLayout>
-    }
-    if (currentPhase === 'thanks'){
-        return <DetailPageLayout>
-            <div>
-                Thank you.
-            </div>
-            <div>
-                Any concerns or messages for Tory and Macky?
-            </div>
-            <form onSubmit={ handleMessageSubmit }>
-                <input type='text' value={ message } onChange={ handleMessageChange } />
-                <input type='submit' />
-            </form>
-        </DetailPageLayout>
-    }
-    if (currentPhase === 'details'){
-        return <DetailPageLayout>
-            <div>
-                Hello, Party of { data[currentItem].name }. You have been alloted { data[currentItem].count } seats.
-            </div>
-            <div>
-                Please Fill in the following details for your reservation. If you dont need all the slots just leave the space blank.
-            </div>
-            <div>
-                <form onSubmit={ handleSubmit }>
-                { JSON.parse(formData).map( (formItem, index) => {
-                    return <div key={ index }>
-                        <input placeholder='name' type="text" value={ formItem.name } onChange={ () => handleFormChange(event, index, 'name') } name={ index }>
-                        </input>
-                        <div className='dinner-picker'>
-                            <p>
-                                select a dinner choice:
-                            </p>
-                            <select value={ formItem.dinner } onChange={ () => handleFormChange(event, index, 'dinner') } name={ index }>
-                            <option value='undecided'>
-                                    undecided
-                                </option>
-                                <option value='chicken'>
-                                    chicken
-                                </option>
-                                <option value='beef'>
-                                    beef
-                                </option>
-                                <option value='veggie'>
-                                    veggie
-                                </option>
-                                <option value='kids meal'>
-                                    kids meal
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                }) }
-                <input type='submit'/>
-                </form>
-            </div>
-            <div>
-                { error }
-            </div>
-            <div>
-                if you have any concerns about your number of seats, please email torymackywedding@gmail.com
-            </div>
-        </DetailPageLayout>
-    }
 }

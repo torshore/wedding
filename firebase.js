@@ -1,3 +1,5 @@
+/* eslint-disable no-undef*/
+
 const config = {
     apiKey: process.env.GATSBY_FIREBASE_APIKEY,
     authDomain: process.env.GATSBY_FIREBASE_AUTHDOMAIN,
@@ -8,7 +10,6 @@ const config = {
 
 let firebaseInstance
 export const getFirebase = firebase => {
-    console.log(process.env.GATSBY_FIREBASE_DATABASEURL)
   if (firebaseInstance) {
     return firebaseInstance
   }
