@@ -83,7 +83,7 @@ export default function rsvp() {
     }
 
     const handleMessageChange = (event) => {
-        setMessage(event.target.value)
+        setMessage(event.target.value);
     }
 
     const handleMessageSubmit = (event) => {
