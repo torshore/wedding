@@ -4,6 +4,7 @@ import { navigate } from 'gatsby';
 import DetailPageLayout from '../components/DetailPageLayout.jsx';
 import DropdownInput from '../components/DropdownInput.jsx';
 import Spinner from '../components/Spinner.jsx';
+import TextInput from '../components/TextInput.jsx';
 import { getFirebase } from '../../firebase';
 
 import '../styles/rsvp.scss';
@@ -213,8 +214,13 @@ export default function rsvp() {
                             Any concerns or messages for Tory and Macky?
                     </div>
                     <form onSubmit={handleMessageSubmit}>
-                        <input type='text' value={message} onChange={handleMessageChange} />
-                        <input type='submit' />
+                        <TextInput
+                            type="textarea"
+                            value={message}
+                            onChange={handleMessageChange}
+                            placeholder="Send us any messages or questions here"
+                        />
+                        <button type='submit'>Submit</button>
                     </form>
                 </>
                 : null

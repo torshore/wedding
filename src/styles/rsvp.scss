@@ -3,7 +3,6 @@
 .rsvp {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     height: 100%;
 
@@ -56,5 +55,9 @@
                 transition: box-shadow 0.2s ease-in;
             }
         }
+    }
+
+    ._label {
+        margin-bottom: 20px;
     }
 }

@@ -1,0 +1,30 @@
+@import '../theme.scss';
+
+.search-text-input {
+    display: block;
+    width: 100%;
+
+    >input, textarea {
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid darkgrey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgba(darkgrey, 0.1);
+        text-align: left;
+        line-height: 16px;
+        font-size: 14px;
+        color: black;
+        resize: none;
+
+        &::-webkit-input-placeholder {
+            color: darkgrey;
+            opacity: 0.6;
+        }
+
+        &::-ms-input-placeholder {
+            color: darkgrey;
+            opacity: 0.6;
+        }
+    }
+}
