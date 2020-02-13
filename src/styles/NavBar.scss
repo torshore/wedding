@@ -10,7 +10,7 @@
     }
 
     @media #{$isPhone} {
-        flex: 1;
+        flex: none;
         padding: $page-gutter / 2;
         justify-content: center;
         flex-wrap: wrap;

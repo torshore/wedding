@@ -13,6 +13,12 @@
             padding: 10px 15px;
             line-height: 14px;
             font-size: 14px;
+
+            @media #{$isPhone} {
+                padding: 5px 10px;
+                line-height: 11px;
+                font-size: 11px;
+            }
         }
     }
 
@@ -31,7 +37,17 @@
         color: white;
         pointer-events: none; // clicks to underlying select
 
-        >._icon {
+        @media #{$isPhone} {
+            padding: 8px 12px;
+            font-size: 12px;
+
+            > ._icon {
+                margin: -2px 0 0 15px;
+                font-size: 12px;
+            }
+        }
+
+        > ._icon {
             margin: -2px 0 0 30px; // reduce line height and nudge
             font-size: 20px;
             color: white;
@@ -54,6 +70,12 @@
         font-family: inherit;
         font-size: 14px; // for the menu
         cursor: pointer;
+
+        @media #{$isPhone} {
+            height: 20px;
+            padding: 0 5px;
+            font-size: 11px;
+        }
 
         &:focus {
             outline: none;
