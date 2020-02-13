@@ -12,6 +12,10 @@
     color: $grey-text;
     letter-spacing: 1px;
 
+    @media #{$isPhone} {
+        letter-spacing: 0;
+    }
+
     >._title {
         display: flex;
         flex-direction: column;
