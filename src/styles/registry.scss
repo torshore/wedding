@@ -23,6 +23,11 @@
         margin-bottom: $spacing;
         font-size: 20px;
 
+        @media #{$isPhone} {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         >._image {
             width: 100px;
             height: 50px;
@@ -30,6 +35,11 @@
             background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/leaf-border.png?alt=media&token=f7131637-1578-4cab-8177-944e5cd9dac6') no-repeat;
             background-size: cover;
             background-position: bottom;
+
+            @media #{$isPhone} {
+                width: 50px;
+                height: 25px;
+            }
         }
     }
 
@@ -39,10 +49,19 @@
         align-items: center;
         justify-content: space-between;
 
+        @media #{$isPhone} {
+            align-items: inherit;
+            flex-direction: column;
+        }
+
         > ._column {
             flex: 1;
             display: flex;
             justify-content: center;
+
+            @media #{$isPhone} {
+                padding: 0 10px;
+            }
 
              > ._link {
                 width: 85%;
@@ -51,9 +70,19 @@
                 background-size: contain;
                 background-position: center;
                 text-decoration: none;
+                cursor: pointer;
+
+                @media #{$isPhone} {
+                    height: 100px;
+                }
 
                 &.-amazon {
                     background: url('https://firebasestorage.googleapis.com/v0/b/wedding-a1abe.appspot.com/o/amazon.png?alt=media&token=422cbddb-eff1-4ffc-b5de-1b103886126e') no-repeat;
+
+                    @media #{$isPhone} {
+                        background-size: cover;
+                        background-position: center;
+                    }
                 }
             }
         }
