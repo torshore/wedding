@@ -1,0 +1,25 @@
+@import '../theme.scss';
+
+.reports {
+    background: white;
+}
+
+.report-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.count {
+    position: fixed;
+    left: 350px;
+}
+
+.list {
+    position: fixed;
+    left: 750px;
+    display: flex;
+}
+
+.confirmed-guest {
+    padding-left: 20px;
+}
