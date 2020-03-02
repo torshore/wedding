@@ -1,25 +1,29 @@
-@import '../theme.scss';
-
 .reports {
-    background: white;
+    height: 100%;
+    overflow-y: scroll;
+
+    > table {
+        border-collapse: collapse;
+
+        > thead {
+            padding: 0;
+            border-bottom: 1px solid black;
+
+            > tr > th {
+                padding: 10px 30px;
+            }
+        }
+
+        > tbody {
+            height: 100%;
+            > tr > td {
+                padding: 10px 30px;
+            }
+        }
+    }
 }
 
-.report-container {
-    display: flex;
-    flex-direction: row;
-}
+  @import '../theme.scss';
 
-.count {
-    position: fixed;
-    left: 350px;
-}
 
-.list {
-    position: fixed;
-    left: 750px;
-    display: flex;
-}
-
-.confirmed-guest {
-    padding-left: 20px;
-}
+ 
