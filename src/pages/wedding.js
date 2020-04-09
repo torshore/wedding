@@ -17,7 +17,7 @@ export default () => (
             <div className="_details">
                 <div className="_column">
                     <span className="_cursive">when</span>
-                    <span className="_outline">May 30th, 2020</span>
+                    <span className="_outline">Sept 20th, 2020</span>
                     <span className="_outline">3:00 PM</span>
                     <span>COCKTAIL HOUR, DINNER & DANCING TO FOLLOW</span>
                 </div>
