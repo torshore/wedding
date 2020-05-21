@@ -25,6 +25,16 @@ export default function Reports() {
         return sum
     }
 
+    const notAttendingCount = (data) => {
+        let countedGuests = data.filter(guest => {
+            return guest.attending === false
+        })
+
+        console.log(countedGuests)
+
+        return countedGuests.length
+    }
+
     // const dinnerCount = (data, type) => {
     //     let countedGuests = data.filter(guest => {
     //         return !!guest.attending
@@ -63,9 +73,8 @@ export default function Reports() {
             <p className='title'>
                 Report
             </p>
-            <p>
-                Confirmed Guest Count: {data ? ConfirmedCount(data) : ''}
-            </p>
+            <p>Confirmed Guest Count: {data ? ConfirmedCount(data) : ''}</p>
+            <p> Not Attending Count: {data ? notAttendingCount(data) : ''}</p>
             
             {data 
                 ? <table>
