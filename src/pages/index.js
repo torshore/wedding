@@ -13,7 +13,7 @@ export default () => {
             mainTitle="TORY & MACKY"
             subTitle={
                 <animated.div className="_sub-title" style={animationProps}>
-                    SEPT <span>20</span> 2020
+                    OCT <span>22</span> 2021
             </animated.div>
             }
         />
